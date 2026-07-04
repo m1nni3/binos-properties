@@ -1,0 +1,17 @@
+{
+  "name": "pomp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tailwindcss -i ./styles.css -o ./output.css --watch",
+    "build": "tailwindcss -i ./styles.css -o ./output.css --minify",
+    "deploy": "npm run build && wrangler deploy",
+    "db:init": "wrangler d1 execute pomp --remote --file=migrations/001_schema.sql",
+    "db:local": "wrangler d1 execute pomp --local --file=migrations/001_schema.sql"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "wrangler": "^4.107.0"
+  }
+}

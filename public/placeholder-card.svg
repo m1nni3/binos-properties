@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f4f8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0f4f8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- House silhouette -->
+  <g transform="translate(100, 60)" opacity="0.12">
+    <path d="M0 180 L100 80 L200 30 L300 80 L400 180 L400 300 L0 300 Z" fill="#4a5568"/>
+    <rect x="140" y="160" width="120" height="140" fill="#e8f4f8"/>
+    <rect x="160" y="100" width="40" height="60" fill="#e8f4f8"/>
+    <rect x="220" y="100" width="40" height="60" fill="#e8f4f8"/>
+    <rect x="170" y="180" width="30" height="40" fill="#e8f4f8"/>
+    <rect x="220" y="180" width="30" height="40" fill="#e8f4f8"/>
+  </g>
+  <!-- Trees -->
+  <g transform="translate(40, 220)" opacity="0.15">
+    <circle cx="30" cy="30" r="25" fill="#6b8e7b"/>
+    <circle cx="15" cy="38" r="18" fill="#7a9e8b"/>
+    <circle cx="45" cy="38" r="22" fill="#6b8e7b"/>
+    <rect x="26" y="60" width="8" height="20" fill="#8b7355"/>
+  </g>
+  <g transform="translate(310, 230)" opacity="0.15">
+    <circle cx="25" cy="25" r="22" fill="#6b8e7b"/>
+    <circle cx="12" cy="32" r="16" fill="#7a9e8b"/>
+    <circle cx="38" cy="32" r="20" fill="#6b8e7b"/>
+    <rect x="22" y="50" width="6" height="18" fill="#8b7355"/>
+  </g>
+  <!-- Text -->
+  <text x="200" y="160" font-family="Inter, sans-serif" font-weight="900" font-size="48" fill="#1a365d" text-anchor="middle">PHOTO</text>
+  <text x="200" y="220" font-family="Inter, sans-serif" font-weight="900" font-size="48" fill="#1a365d" text-anchor="middle">COMING SOON</text>
+</svg>
