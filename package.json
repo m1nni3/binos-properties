@@ -1,14 +1,17 @@
 {
-  "name": "pomp",
+  "name": "binos-properties",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "tailwindcss -i ./styles.css -o ./output.css --watch",
-    "build": "tailwindcss -i ./styles.css -o ./output.css --minify",
+    "build": "tailwindcss -i ./styles.css -o ./output.css --minify && mkdir -p dist/public && cp index.html app.js output.css manifest.json dist/public/ && cp -r lib routes dist/public/ && cp public/* dist/public/ 2>/dev/null || true",
     "deploy": "npm run build && wrangler deploy",
     "db:init": "wrangler d1 execute pomp --remote --file=migrations/001_schema.sql",
     "db:local": "wrangler d1 execute pomp --local --file=migrations/001_schema.sql"
+  },
+  "dependencies": {
+    "hono": "^4.0.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.0",
