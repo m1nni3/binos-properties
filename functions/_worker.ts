@@ -56,8 +56,12 @@ const app = new Hono<{ Bindings: Env }>()
 
 app.use('/api/*', cors({
   origin: '*',
-  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization'],
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-CSRF-Token', 'X-User-Agent'],
+  exposeHeaders: ['Content-Length', 'X-Request-Id'],
+  maxAge: 600,
+  credentials: false,
+  preflight: true,
 }))
 
 // ── Helpers ──────────────────────────────────────────────
