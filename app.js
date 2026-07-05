@@ -9,6 +9,7 @@ import { renderTasks } from './routes/tasks.js'
 import { renderPortals } from './routes/portals.js'
 import { renderActivity } from './routes/activity.js'
 import { renderMaintenance } from './routes/maintenance.js'
+import { renderGovernance } from './routes/governance.js'
 
 const sections = [
   {

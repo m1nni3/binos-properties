@@ -16,6 +16,124 @@ const SCHEME_MAP = {
   Villeroy: { agent: 'Trafalgar',     province: 'Gauteng'      },
 }
 
+// Property detail tabs configuration
+const PROPERTY_DETAIL_TABS = [
+  'Overview',
+  'Lease Details',
+  'Maintenance',
+  'Documents',
+  'Gallery',
+  'Images',
+  'Insurance',
+  'Utilities',
+  'Taxes',
+  'Bonds',
+  'Planning',
+  'Schedule',
+  'Emergency'  // Fixed typo
+]
+
+// Property sections data for each tab
+const PROPERTY_SECTIONS = {
+  'Overview': [
+    { key: 'scheme_name', label: 'Scheme', format: 'text' },
+    { key: 'suburb', label: 'Suburb', format: 'text' },
+    { key: 'address', label: 'Address', format: 'text' },
+    { key: 'owner_name', label: 'Owner', format: 'text' },
+    { key: 'managing_agent_name', label: 'Managing Agent', format: 'text' },
+    { key: 'size_sqm', label: 'Size (m²)', format: 'number' },
+    { key: 'bedrooms', label: 'Bedrooms', format: 'number' },
+  ],
+  'Lease Details': [
+    { key: 'rent_start_date', label: 'Rent Start Date', format: 'date' },
+    { key: 'rent_end_date', label: 'Rent End Date', format: 'date' },
+    { key: 'monthly_rent', label: 'Monthly Rent', format: 'currency' },
+    { key: 'rental_deposit', label: 'Rental Deposit', format: 'currency' },
+    { key: 'leasing_agent', label: 'Leasing Agent', format: 'text' },
+    { key: 'lease_type', label: 'Lease Type', format: 'text' },
+  ],
+  'Maintenance': [
+    { key: 'maintenance_status', label: 'Status', format: 'text' },
+    { key: 'last_maintenance_date', label: 'Last Maintenance', format: 'date' },
+    { key: 'next_maintenance_due', label: 'Next Due', format: 'date' },
+    { key: 'maintenance_provider', label: 'Provider', format: 'text' },
+    { key: 'warranty_expiry', label: 'Warranty Expiry', format: 'date' },
+  ],
+  'Documents': [
+    { key: 'lease_document', label: 'Lease Agreement', format: 'text' },
+    { key: 'ids_copy', label: 'IDS Copy', format: 'text' },
+    { key: 'property_insurance', label: 'Property Insurance', format: 'text' },
+    { key: 'additional_docs', label: 'Additional Docs', format: 'text' },
+  ],
+  'Gallery': [
+    { key: 'gallery_images', label: 'Gallery Images', format: 'text' },
+    { key: 'virtual_tour_link', label: 'Virtual Tour', format: 'text' },
+    { key: 'floor_plan', label: 'Floor Plan', format: 'text' },
+  ],
+  'Images': [
+    { key: 'exterior_images', label: 'Exterior Images', format: 'text' },
+    { key: 'interior_images', label: 'Interior Images', format: 'text' },
+    { key: '360_view_link', label: '360° View', format: 'text' },
+  ],
+  'Insurance': [
+    { key: 'building_insurance', label: 'Building Insurance', format: 'text' },
+    { key: 'contents_insurance', label: 'Contents Insurance', format: 'text' },
+    { key: 'liability_insurance', label: 'Liability Insurance', format: 'text' },
+    { key: 'insurance_provider', label: 'Provider', format: 'text' },
+  ],
+  'Utilities': [
+    { key: 'water_supplier', label: 'Water Supplier', format: 'text' },
+    { key: 'electricity_provider', label: 'Electricity Provider', format: 'text' },
+    { key: 'gas_provider', label: 'Gas Provider', format: 'text' },
+    { key: 'internet_provider', label: 'Internet Provider', format: 'text' },
+  ],
+  'Taxes': [
+    { key: 'property_tax', label: 'Property Tax', format: 'currency' },
+    { key: 'vatt_status', label: 'VAT Status', format: 'text' },
+    { key: 'tax_clearance', label: 'Tax Clearance', format: 'date' },
+    { key: 'tax_assessment_year', label: 'Assessment Year', format: 'text' },
+  ],
+  'Bonds': [
+    { key: 'bond_details', label: 'Bond Details', format: 'text' },
+    { key: 'bond_bank', label: 'Bank', format: 'text' },
+    { key: 'bond_monthly_payment', label: 'Monthly Payment', format: 'currency' },
+    { key: 'bond_term', label: 'Term', format: 'text' },
+  ],
+  'Planning': [
+    { key: 'development_plan', label: 'Development Plan', format: 'text' },
+    { key: 'zoning_classification', label: 'Zoning', format: 'text' },
+    { key: 'permits_required', label: 'Permits', format: 'boolean' },
+    { key: 'planning_status', label: 'Planning Status', format: 'text' },
+  ],
+  'Schedule': [
+    { key: 'maintenance_schedule', label: 'Maintenance Schedule', format: 'text' },
+    { key: 'inspection_schedule', label: 'Inspection Schedule', format: 'text' },
+    { key: 'appointment_slots', label: 'Available Slots', format: 'text' },
+  ],
+  'Emergency': [
+    { key: 'emergency_contact', label: 'Emergency Contact', format: 'text' },
+    { key: 'medical_emergency_contact', label: 'Medical Contact', format: 'text' },
+    { key: 'police_emergency_contact', label: 'Police Contact', format: 'text' },
+  ],
+}
+
+// Contact filters by tab
+const TAB_CONTACT_FILTERS = {
+  'Overview': null,
+  'Lease Details': null,
+  'Maintenance': c => c.category === 'maintenance' || c.subcategory === 'maintenance',
+  'Documents': c => c.category === 'document' || c.subcategory === 'document',
+  'Gallery': c => c.category === 'gallery' || c.subcategory === 'gallery',
+  'Images': c => c.category === 'image' || c.subcategory === 'image',
+  'Emergency': c => c.category === 'emergency',
+  'Insurance': c => c.category === 'insurance' || c.subcategory === 'insurance',
+  'Utilities': c => c.category === 'utility' || c.subcategory === 'utility',
+  'Taxes': c => c.category === 'tax' || c.subcategory === 'tax',
+  'Bonds': c => c.category === 'bond' || c.subcategory === 'bond',
+  'Planning': c => c.category === 'planning' || c.subcategory === 'planning',
+  'Schedule': null,
+}
+
 // R2 image paths
 const R2_IMAGES = 'https://pub-d66179a93f094dd788fadc511338b676.r2.dev'
 const R2_GALLERY = 'https://pub-d973b33a485c4c33b4da9c059732fda8.r2.dev'
